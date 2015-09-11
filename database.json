@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "driver": "mysql",
+    "user": "root",
+    "database": "unicolab",
+    "password": "mysqlrootpassword"
+  },
+ 
+  "production": {
+    "driver": "mysql",
+    "user": "root",
+    "database": "unicolab",
+    "password": "mysqlrootpassword"
+  }
+}
