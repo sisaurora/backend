@@ -85,17 +85,17 @@ router.get('/:user_id/status/:status_id/delete', function (req, res) {
 
 // Rotas de status
 
-router.get('/:user_id/notifications/', function (req, res) {
+router.get('/:user_id/notification/', function (req, res) {
   models.Notification.findAll({})
   .then(function(listar) {
     res.send(listar);
   });
 });
 
-router.get('/:user_id/notifications/:notification_id', function (req, res) {
+router.get('/:user_id/notification/:notification_id', function (req, res) {
   models.Notification.findOne({
     where: {
-      id: req.params.status_id
+      id: req.params.notification_id
     }
   }).then(function(listar) {
     res.send(listar);
