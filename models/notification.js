@@ -1,10 +1,22 @@
-exports = module.exports = {};
-var	db = require('../conf/db.js'),
-	Sequelize = require('sequelize');
+"use strict";
 
-exports.Notification = db.db.define('notification', {
-  message: Sequelize.STRING,
-  privacy: Sequelize.STRING,
-  type: Sequelize.INTEGER
-//  userId: Sequelize.INTEGER
-});
+module.exports = function(sequelize, DataTypes) {
+  var Notification = sequelize.define("Notification", {
+    message: DataTypes.STRING,
+    privacy: DataTypes.STRING,
+    type: DataTypes.STRING
+  }, {
+    classMethods: {
+      associate: function(models) {
+        Notification.belongsTo(models.User, {
+          onDelete: "CASCADE",
+          foreignKey: {
+            allowNull: false
+          }
+        });
+      }
+    }
+  });
+
+  return Notification;
+};

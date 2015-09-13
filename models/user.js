@@ -1,15 +1,23 @@
-exports = module.exports = {};
-var	db = require('../conf/db.js'),
-	Sequelize = require('sequelize');
+"use strict";
 
-exports.User = db.db.define('users', {
-  username: Sequelize.STRING,
-  fname: Sequelize.STRING,
-  lname: Sequelize.STRING,
-  email: Sequelize.STRING,
-  picture: Sequelize.STRING,
-  fname: Sequelize.STRING,
-  active: Sequelize.BOOLEAN,
-  online: Sequelize.INTEGER
+module.exports = function(sequelize, DataTypes) {
+  var User = sequelize.define("User", {
+    username: DataTypes.STRING,
+    fname: DataTypes.STRING,
+    lname: DataTypes.STRING,
+    email: DataTypes.STRING,
+    picture: DataTypes.STRING,
+    active: DataTypes.BOOLEAN,
+    online: DataTypes.BOOLEAN,
+    bio: DataTypes.TEXT
+  }, {
+    classMethods: {
+      associate: function(models) {
+        User.hasMany(models.Status)
+        User.hasMany(models.Notification)
+      }
+    }
+  });
 
-});
+  return User;
+};

@@ -1,10 +1,22 @@
-exports = module.exports = {};
-var	db = require('../conf/db.js'),
-	Sequelize = require('sequelize');
+"use strict";
 
-exports.Status = db.db.define('status', {
-  message: Sequelize.STRING,
-  privacy: Sequelize.STRING,
-  copyright: Sequelize.BOOLEAN
-//  userId: Sequelize.INTEGER
-});
+module.exports = function(sequelize, DataTypes) {
+  var Status = sequelize.define("Status", {
+    message: DataTypes.STRING,
+    privacy: DataTypes.STRING,
+    copyright: DataTypes.STRING
+  }, {
+    classMethods: {
+      associate: function(models) {
+        Status.belongsTo(models.User, {
+          onDelete: "CASCADE",
+          foreignKey: {
+            allowNull: false
+          }
+        });
+      }
+    }
+  });
+
+  return Status;
+};
