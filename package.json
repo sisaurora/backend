@@ -23,5 +23,10 @@
     "expect.js": "^0.3.1",
     "mocha": "^2.2.5",
     "supertest": "^1.0.1"
+  },
+  "apidoc": {
+    "title": "Aurora Core docRoot",
+    "url" : "https://dev.unicolab.com.br/api/",
+    "description": "Starting and Staring cool things =]"
   }
 }

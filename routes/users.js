@@ -5,9 +5,7 @@ var router  = express.Router();
 router.post('/new', function(req, res) {
   models.User.create({
     username: req.body.username
-  }).then(function() {
-    res.redirect('/');
-  });
+  })
 });
 
 router.get('/:user_id/delete', function(req, res) {
@@ -15,9 +13,7 @@ router.get('/:user_id/delete', function(req, res) {
     where: {
       id: req.params.user_id
     }
-  }).then(function() {
-    res.redirect('/');
-  });
+  })
 });
 
 router.get('/', function(req, res) {
@@ -64,9 +60,7 @@ router.post('/:user_id/status/new', function (req, res) {
   models.Status.create({
     title: req.body.title,
     UserId: req.params.user_id
-  }).then(function() {
-    res.redirect('/');
-  });
+  })
 });
 
 router.get('/:user_id/status/:status_id/delete', function (req, res) {
@@ -74,9 +68,7 @@ router.get('/:user_id/status/:status_id/delete', function (req, res) {
     where: {
       id: req.params.status_id
     }
-  }).then(function() {
-    res.redirect('/');
-  });
+  })
 });
 
 /*
@@ -106,9 +98,7 @@ router.post('/:user_id/notification/new', function (req, res) {
   models.Notification.create({
     title: req.body.title,
     UserId: req.params.user_id
-  }).then(function() {
-    res.redirect('/');
-  });
+  })
 });
 
 router.get('/:user_id/notification/:notification_id/delete', function (req, res) {
@@ -116,9 +106,7 @@ router.get('/:user_id/notification/:notification_id/delete', function (req, res)
     where: {
       id: req.params.status_id
     }
-  }).then(function() {
-    res.redirect('/');
-  });
+  })
 });
 
 
