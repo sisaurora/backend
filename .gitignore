@@ -43,3 +43,6 @@ migrations
 files
 db
 lib
+client-side00
+db.sqlite-journal
+db.sqlite
