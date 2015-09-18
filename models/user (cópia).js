@@ -16,18 +16,7 @@ module.exports = function(sequelize, DataTypes) {
         retrieveByNamePassword: function (username, onSuccess, onError) {
             User.find({where: {username: username}}, {raw: true})
             .then(onSuccess).catch(onError);
-        },
-    	toJSON: function () {
-	      var values = this.get();
-	      delete values.password,
-	      delete values.createdAt,
-	      delete values.updatedAt,
-	      delete values.id,
-	      delete values.picture,
-	      delete values.online,
-	      delete values.email
-	      return values;
-    	}
+        }
     },
     classMethods: {
       associate: function(models) {

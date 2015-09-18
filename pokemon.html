@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>pokemon</title>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+<script src="https://raw.githubusercontent.com/gdi2290/angular-pokemon/master/angular-pokemon.js"></script>
+</head>
+<body>
+
+<script>
+  angular.module('ngPokemon', [])
+  .controller('DemoCtrl', function ($scope) {
+    $scope.myPokemon = 'pikachu';
+  })
+  .directive('ngPokemon', function () {
+    return {
+      link: function (scope, element, attrs) {
+        var img = angular.element('<img>');
+        element.html('');
+        element.append(img);
+        scope.$watch(attrs.ngPokemon, function (thatPokemon) {
+          if (thatPokemon) {
+            img.attr('src', 'http://img.pokemondb.net/artwork/' + thatPokemon + '.jpg');
+          }
+        })
+      }
+    }
+  })
+</script>
+
+  <body ng-app="ngPokemon" ng-controller="DemoCtrl">
+    <input ng-model="myPokemon">
+    <div ng-pokemon="myPokemon"></div>
+  </body>
+</body>
+</html>

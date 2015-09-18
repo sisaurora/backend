@@ -59,7 +59,7 @@ router.get('/:user_id/status/:status_id', function (req, res) {
 router.post('/:user_id/status/new', function (req, res) {
   models.Status.create({
     title: req.body.title,
-    UserId: req.params.user_id
+    modelsId: req.params.user_id
   })
 });
 
@@ -97,7 +97,7 @@ router.get('/:user_id/notification/:notification_id', function (req, res) {
 router.post('/:user_id/notification/new', function (req, res) {
   models.Notification.create({
     title: req.body.title,
-    UserId: req.params.user_id
+    modelsId: req.params.user_id
   })
 });
 
@@ -108,6 +108,5 @@ router.get('/:user_id/notification/:notification_id/delete', function (req, res)
     }
   })
 });
-
 
 module.exports = router;
